@@ -1,0 +1,146 @@
+.form-item {
+    margin-bottom: em(15);
+}
+.form-text{
+    color: $black ;
+}
+legend,
+label {
+    margin-bottom: em(5);
+    font-size: em(16);
+    display: block;
+    &.form-required::after {
+        content: " *";
+        color: $red;
+    }
+    &:first-letter {
+        text-transform: uppercase;
+    }
+    &:focus-visible {
+        outline: none;
+    }
+}
+input,
+select {
+    height: em(50);
+    font-size: em(16) !important;
+    padding: em(5) em(10);
+    border: solid 1px $border-color;
+    &::placeholder{
+        color: $fossil ;
+    }
+    &:focus-visible {
+        outline: none;
+    }
+}
+select{
+    border-radius: em(0) !important;
+    &:focus{
+        border-color: $border-color !important;
+        box-shadow: none !important;
+    }
+}
+select.form-select,
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    margin: 0;
+    font-size: em(16);
+}
+input[type="range"],
+input[type="file"] {
+    border: 0;
+    padding: 0;
+}
+/* Context for relative positioning */
+.form-type-radio label {
+    position: relative;
+}
+
+/* Base styles for both types of inputs */
+input[type="radio"],
+input[type="checkbox"] {
+    appearance: none;
+    background: #fff;
+    border: 2px solid #777;
+    height: em(20);
+    width: em(20);
+    border-radius: 100%;
+    vertical-align: text-bottom;
+    position: relative;
+    padding: unset;
+}
+
+/* Remove the circular shape from checkboxes */
+input[type="checkbox"] {
+    border-radius: 0;
+}
+
+/* Styles for the pseudo-elements */
+input[type="radio"]::before,
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    top: 0;
+}
+
+/* Center of the checked radio button */
+input[type="radio"]:checked::before {
+    border: 5px solid transparent;
+    border-radius: 100%;
+    background: $red;
+    margin: 2px;
+}
+
+/* The checkmark shape */
+input[type="checkbox"]:checked::before {
+    border-right: 2px solid $red;
+    border-bottom: 3px solid $red;
+    height: 90%;
+    width: 40%;
+    transform: rotate(50deg) translateY(-20%) translateX(-10%);
+}
+  
+/* Some focus styles for accessibility */
+// input[type="radio"]:focus,
+// input[type="checkbox"]:focus {
+//     outline: solid 1px;
+//     outline-offset: 2px;
+// }
+
+.description {
+    font-size: em(12);
+    color: $fossil;
+}
+
+.button--primary {
+    font-size: em(16);
+    color: $white;
+    background: $black;
+    border: none;
+    text-transform: uppercase;
+    padding: em(7) em(10);
+}
+
+.button--secondary {
+    color: $black;
+    font-size: em(16);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid $border-color;
+    padding: em(7) em(10);
+    display: inline-block;
+    background-color: $white;
+}
+.form-type-textarea{
+    textarea {
+        width: 100%;
+        border-color: $border-color;
+    }
+}

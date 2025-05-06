@@ -1,0 +1,22 @@
+.site-header {
+    .navbar {
+        .navbar-brand > img {
+            max-width: 60px;
+            @include md {
+                max-width: 100px;
+            }
+        }
+        &.navbar-expand-lg {
+            z-index: 2;
+            @include lg {
+                @include justify-content(space-between);
+            }
+            .menu-wrapper {
+                @include md {
+                    display: flex !important;
+                    padding: em(26) 0 em(25);
+                }
+            }
+        }
+    }
+}

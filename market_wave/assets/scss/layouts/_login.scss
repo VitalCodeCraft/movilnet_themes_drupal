@@ -1,0 +1,40 @@
+// login page css
+.wave-user {
+  min-height: 100vh;
+  @include flexbox;
+  .login-image-bg {
+    background-image: url("./assets/images/bg_1.webp");
+    background-size: cover;
+    background-position: center;
+  }
+  .login-panel {
+    padding: em(50);
+    @include flexbox;
+    @include flex-direction(column);
+    @include justify-content(center);
+    .title {
+        font-weight: 400;
+    }
+    .header {
+        margin-bottom: em(30);
+        text-align: center;
+        img {
+            width: 80px;
+        }
+        .navbar-brand {
+            font-size: 0;
+        }
+    }
+    .button--primary {
+        padding: em(7) em(30);
+    }
+    .more-links {
+        @include flexbox;
+        @include justify-content(space-between);
+        margin-top: em(20);
+        > a {
+            font-size: em(12);
+        }
+    }
+  }
+}

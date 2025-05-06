@@ -1,0 +1,34 @@
+name: Market Wave
+type: theme
+base theme: false
+description: "Market Weave: Elevate your online store with our dynamic e-commerce theme. Seamlessly blend style and functionality to create a captivating shopping experience for your customers. With its sleek design and customizable features, Market Weave empowers you to showcase your products effortlessly and weave success into every transaction."
+package: Sahjavi
+core_version_requirement: ^10 || ^11
+
+libraries:
+  - market_wave/global-styling
+
+regions:
+  top_header: "Top header bar"
+  header: Header
+  primary_menu: Primary menu
+  secondary_menu: Secondary menu
+  hero: Hero (full width)
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  content_above: Content Above
+  content: Content
+  sidebar: Sidebar
+  content_below: Content Below
+  footer_top: Footer Top
+  footer_bottom: Footer Bottom
+regions_hidden:
+  - hidden
+
+# version: "1.0.0"
+# project: "market_wave"
+
+# Information added by Drupal.org packaging script on 2024-12-19
+version: '1.0.7'
+project: 'market_wave'
+datestamp: 1734614525

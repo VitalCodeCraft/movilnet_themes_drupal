@@ -1,0 +1,103 @@
+// home page scss
+
+// Blogs home page listing view scss
+.views-blockblogs-listing-home-page-block {
+    margin-top: em(100);
+    h2 {
+        text-align: center;
+        margin-bottom: em(25);
+    }
+}
+
+// Hot deal section
+.categories {
+    overflow: hidden;
+    padding-top: 150px;
+    padding-bottom: 125px;
+    .categories__text {
+        padding-top: 40px;
+        position: relative;
+        z-index: 1;
+        &::before {
+            position: absolute;
+            left: -485px;
+            top: 0;
+            height: 300px;
+            width: 600px;
+            background: $white;
+            z-index: -1;
+            content: "";
+        }
+        h2 {
+            color: $fossil;
+            line-height: em(36);
+            font-size: em(34);
+            span {
+                color: $black;
+            }
+        }
+    }
+}
+
+
+// 
+.view-product-listing {
+    padding-top: em(100);
+    .banner-item {
+        position: relative;
+        overflow: hidden;
+        .banner-item-text {
+            max-width: em(300);
+            position: absolute;
+            left: 0;
+            top: em(140);
+            h2 {
+                font-size: em(38);
+            }
+            > a {
+                display: inline-block;
+                color: $black;
+                font-size: em(13);
+                letter-spacing: 4px;
+                text-transform: uppercase;
+                padding: em(4) 0;
+                position: relative;
+                text-decoration: none;
+                &::after {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 2px;
+                    background: $black;
+                    content: "";
+                    @include transition(all 0.3s);
+                }
+            }
+        }
+        .banner-item-pic {
+            float: right;
+        }
+        &.item-2 {
+            margin-top: em(-75);
+            .banner-item-text {
+                position: relative;
+                top: 0;
+                left: 0;
+                max-width: 100%;
+                padding-top: em(22);
+            }
+            .banner-item-pic {
+                float: none;
+            }
+        }
+        &.item-3 {
+            margin-top: em(100);
+        }
+        &:hover a::after {
+            width: em(40);
+            background: $red;
+        }
+    }
+}
+

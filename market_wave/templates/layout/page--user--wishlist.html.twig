@@ -1,0 +1,13 @@
+<section class="wave-user login-page wishlist-page">
+	<div class="login-panel wishlist-panel">
+		<div class="container">
+			{% if page.header %}
+				<div class="header">
+					{{ page.header }}
+				</div>
+			{% endif %}
+			<h1 class="title">{{ title }}</h1>
+			{{ page.content|without('market_wave_primary_local_tasks') }}
+		</div>
+	</div>
+</section>

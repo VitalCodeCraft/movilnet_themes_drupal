@@ -1,0 +1,44 @@
+{#
+/**
+    * @file
+    * Default theme implementation to display a view of unformatted rows.
+    *
+    * Available variables:
+    * - title: The title of this group of rows. May be empty.
+    * - rows: A list of the view's row items.
+    *   - attributes: The row's HTML attributes.
+    *   - content: The row's content.
+    * - view: The view object.
+    * - default_row_class: A flag indicating whether default classes should be
+    *   used on rows.
+    *
+    * @see template_preprocess_views_view_unformatted()
+    *
+    * @ingroup themeable
+    */
+#}
+{% if title %}
+    <h3>{{ title }}</h3>
+{% endif %}
+    {% for row in rows %}
+    {% if loop.index == 1 %}
+        <div{{ row.attributes.addClass('col-lg-7', 'offset-lg-4') }}>
+    {% elseif loop.index == 2 %}
+        <div{{ row.attributes.addClass('col-lg-5') }}>
+    {% else %}
+        <div{{ row.attributes.addClass('col-lg-7') }}>
+    {% endif %}
+        <div class="banner-item hover-iffect-wraper item-{{loop.index}}">
+            <div class="banner-item-pic">
+                {% set image = file_url(row.content['#row']._entity.field_images.entity.field_media_image.entity.fileuri) %}
+                <img src="{{ image }}" alt="">
+            </div>
+            <div class="banner-item-text">
+                <h2>{{ row.content['#row']._entity.title.value }}</h2>
+                <a href="#" class="hover-iffect">Shop now</a>
+            </div>
+        </div>
+        {#{ row.content }#}
+    </div>
+    {% endfor %}
+</div>

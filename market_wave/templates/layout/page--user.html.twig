@@ -1,0 +1,16 @@
+<section class="wave-user login-page">
+  <div class="login-panel col-l2 col-lg-6">
+    <div class="container">
+      <div class="col-12 col-xl-10 offset-xl-1">
+        {% if page.header %}
+          <div class="header">
+            {{ page.header }}
+          </div>
+        {% endif %}
+        <h1 class="title">{{ title }}</h1>
+        {{ page.content|without('market_wave_primary_local_tasks') }}
+      </div>
+    </div>
+  </div>
+  <div class="login-image-bg col-l2 col-lg-6"></div>
+</section>

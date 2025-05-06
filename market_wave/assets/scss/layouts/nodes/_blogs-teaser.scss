@@ -1,0 +1,46 @@
+.blog-item {
+    margin-bottom: em(45);
+    .blog-item-pic {
+        height: em(270);
+    }
+    .blog-item-text {
+        padding: em(30) em(30) em(25);
+        margin: em(-35) em(30) em(0) em(30);
+        background-color: $white;
+        @include transition(all 0.3s);
+        > span {
+            font-size: em(13);
+            color: $dark-grey;
+            margin-bottom: em(10);
+        }
+        > h5 {
+            color: $black;
+            line-height: 2m(28);
+            margin-bottom: em(10);
+        }
+        > a {
+            display: inline-block;
+            color: $black;
+            font-size: em(13);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            padding: em(4) 0;
+            position: relative;
+            text-decoration: none;
+            &::after {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 2px;
+                background: $black;
+                content: "";
+                @include transition(all 0.3s);
+            }
+        }
+    }
+    &:hover a::after {
+        width: em(40);
+        background: $red;
+    }
+}

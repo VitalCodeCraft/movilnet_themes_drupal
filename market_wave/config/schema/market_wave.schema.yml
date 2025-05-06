@@ -1,0 +1,4 @@
+# Required to validate default theme settings.
+market_wave.settings:
+  type: theme_settings
+  label: "Market Wave theme"

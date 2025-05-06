@@ -1,0 +1,5 @@
+.container {
+    @include xl {
+        max-width: em(1140);
+    }
+}

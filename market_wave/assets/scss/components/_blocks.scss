@@ -1,0 +1,9 @@
+.search-form {
+  .form-type-search {
+    [type="search"] {
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+  }
+}

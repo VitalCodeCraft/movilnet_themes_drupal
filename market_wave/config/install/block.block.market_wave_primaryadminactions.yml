@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  theme:
+    - market_wave
+id: market_wave_primaryadminactions
+theme: market_wave
+region: highlighted
+weight: -2
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: "Primary admin actions"
+  label_display: "0"
+  provider: core
+visibility: {}

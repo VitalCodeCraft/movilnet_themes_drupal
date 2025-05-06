@@ -1,0 +1,75 @@
+.path-checkout {
+    .layout-checkout-form {
+        .shopping-cart-table {
+            .checkout-title {
+                text-transform: uppercase;
+                border-bottom: 1px solid $border-color;
+                padding-bottom: em(20);
+                margin-bottom: em(20);
+                font-size: em(16);
+                font-weight: 400;
+            }
+            .checkout-pane-payment-information {
+                legend {
+                    @extend .checkout-title;
+                    margin-top: em(30);
+                }
+            }
+            div[id^=edit-payment-information-payment-method] {
+                @include flexbox;
+                @include flex-flow(row wrap);
+                gap: 3.33%;
+                .form-item {
+                    flex: 0 0 auto;
+                    width: 30%;
+                    label {
+                        border: solid 1px $border-color;
+                        padding: em(45) em(15);
+                        text-align: center;
+                        border-radius: em(5);
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .checkout-order {
+            background-color: $haze;
+            padding: 35px 40px 40px;
+            .order-title {
+                color: $black;
+                text-transform: uppercase;
+                border-bottom: 1px solid $border-color;
+                padding-bottom: em(20);
+                margin-bottom: em(20);
+            }
+        }
+
+        .layout-region-checkout-footer {
+            .form-wrapper {
+                @include flexbox;
+                gap: em(20);
+                .button--primary {
+                    padding-left: em(30);
+                    padding-right: em(30);
+                }
+                .link--previous {
+                    @extend .button--secondary;
+                    padding-left: em(30);
+                    padding-right: em(30);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+
+.checkout-pane-coupon-redemption {
+    .form-wrapper {
+        position: relative;
+        .form-submit {
+            @extend .button--primary;
+        }
+    }
+}

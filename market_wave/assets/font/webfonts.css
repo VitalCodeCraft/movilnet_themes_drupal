@@ -1,0 +1,46 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3249322, 2016-07-12T22:15:16-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: GillSansNova-Light by Monotype 
+ * URL: http://www.myfonts.com/fonts/mti/gill-sans-nova/light/
+ * 
+ * Webfont: GillSansNova-SemiBold by Monotype 
+ * URL: http://www.myfonts.com/fonts/mti/gill-sans-nova/semibold/
+ * 
+ * Webfont: GillSansNova-Bold by Monotype 
+ * URL: http://www.myfonts.com/fonts/mti/gill-sans-nova/bold/
+ * 
+ * Webfont: GillSansNova-Book by Monotype 
+ * URL: http://www.myfonts.com/fonts/mti/gill-sans-nova/book/
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=3249322
+ * Licensed pageviews: 250,000
+ * Webfonts copyright: Copyright 2015 &#x00A9; The Monotype Corporation. All rights reserved.
+ * 
+ * © 2016 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/3194aa");
+
+  
+@font-face {font-family: 'GillSansNova-Light';src: url('webfonts/3194AA_0_0.eot');src: url('webfonts/3194AA_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3194AA_0_0.woff2') format('woff2'),url('webfonts/3194AA_0_0.woff') format('woff'),url('webfonts/3194AA_0_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GillSansNova-SemiBold';src: url('webfonts/3194AA_1_0.eot');src: url('webfonts/3194AA_1_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3194AA_1_0.woff2') format('woff2'),url('webfonts/3194AA_1_0.woff') format('woff'),url('webfonts/3194AA_1_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GillSansNova-Bold';src: url('webfonts/3194AA_2_0.eot');src: url('webfonts/3194AA_2_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3194AA_2_0.woff2') format('woff2'),url('webfonts/3194AA_2_0.woff') format('woff'),url('webfonts/3194AA_2_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GillSansNova-Book';src: url('webfonts/3194AA_3_0.eot');src: url('webfonts/3194AA_3_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3194AA_3_0.woff2') format('woff2'),url('webfonts/3194AA_3_0.woff') format('woff'),url('webfonts/3194AA_3_0.ttf') format('truetype');}
+ 

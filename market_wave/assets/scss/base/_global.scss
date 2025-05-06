@@ -1,0 +1,35 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: $baseFontSize;
+  
+  * {
+    box-sizing: inherit;
+  }
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+  color: $red;
+  &:hover {
+      text-decoration: none;
+  }
+}
+
+.set-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+}
+
+.haze-bg {
+  background-color: $haze;
+  padding: em(40) em(0);
+  margin-bottom: em(100);
+}

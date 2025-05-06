@@ -1,0 +1,30 @@
+// header top css
+.site-header {
+    .header_top {
+        background-color: $black;
+        padding: em(10) em(0);
+        .region-top-header {
+            @include flexbox;
+            @include justify-content(space-between);
+        }
+
+        .block {
+            p {
+                margin: 0;
+                color: $white;
+                font-size: em(14);
+            }
+        }
+
+        .menu--account {
+            .nav {
+                .nav-link {
+                    padding: 0;
+                    margin-left: em(15);
+                    color: $white;
+                    font-size: em(14);
+                }
+            }
+        }
+    }
+}

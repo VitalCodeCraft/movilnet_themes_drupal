@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - market_wave
+id: market_wave_powered
+theme: market_wave
+region: footer_bottom
+weight: -4
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: "Powered by Drupal"
+  label_display: "0"
+  provider: system
+visibility: {}

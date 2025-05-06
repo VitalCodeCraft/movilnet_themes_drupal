@@ -1,0 +1,27 @@
+features:
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 1
+favicon:
+  use_default: 1
+full_width: 0
+header_class: ""
+slideshow_display: 1
+slide_num: 2
+slide_title_1: "What is Lorem Ipsum?"
+slide_desc_1:
+  value: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+  format: basic_html
+slide_image_1: {}
+slide_url_1: "#"
+slide_url_title_1: "See more"
+slide_title_2: "Where can I get some?"
+slide_desc_2:
+  value: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+  format: basic_html
+slide_image_2: {}
+slide_url_2: "#"
+slide_url_title_2: "See more"

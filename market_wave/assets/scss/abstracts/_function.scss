@@ -1,0 +1,176 @@
+// Functions
+
+$baseFontSize: 18px !default;
+$baseLineHeight: 26px !default;
+$base-vertical-margin: $baseLineHeight * 0.75;
+
+// Global
+// ------------------------------
+
+// strip-unit
+// Remove a unit such as px or em from a number.
+//
+// @since 1.0.0
+// @type Function
+//
+// @param {Number} $value The number to strip the unit from.
+//
+// @returns {Number} The stripped number.
+//
+// @example
+// // strip-unit(30px)
+// // // 30
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+// em-to-px
+// Calculates a px number from an em number.
+//
+// @since 0.0.1
+// @type Function
+//
+// @param {Number} $value The em value to calculate from.
+// @param {Number} $base ($baseFontSize) The base font size to calculate the em.
+//
+// @returns {Number} The calculated px number.
+//
+// @example scss Calculate 2em to px.
+// // em-to-px(2em, 16px);
+// // // 32px
+
+@function px-to($value, $base: $baseFontSize) {
+  @return strip-unit($value) * strip-unit($base) * 1px;
+}
+
+// em-to
+// Calculates an em number from a px number.
+//
+// @since 0.0.1
+// @type Function
+//
+// @see {function} strip-unit
+//
+// @param {Number} $value The px value to calculate from.
+// @param {Number} $base ($baseFontSize) The base font size to calculate the em.
+//
+// @returns {Number} The calculated em number.
+//
+// @example scss Calculate 32px to em.
+// // em-to(32px, 16px)
+// // // 2em
+
+@function em-to($value, $base: $baseFontSize) {
+  @if unit($value) == em {
+    @return $value;
+  }
+
+  @if unit($base) == em {
+    $base: px-to($base);
+  }
+
+  $value: strip-unit($value) / strip-unit($base) * 1em;
+
+  @if $value == 0em {
+    $value: 0;
+  }
+
+  @return $value;
+}
+
+// em
+// Calculates a list of px numbers to em values.
+//
+// @since 0.0.1
+// @type Function
+//
+// @see {function} em-to
+//
+// @param {List | Number} $values List of numbers or single number.
+// @param {Number} $base ($baseFontSize) The base font size to calculate the em.
+//
+// @returns {List} A list of converted em values.
+//
+// @example scss Calculate from a list of values.
+// // em(40px 30px 20px 10px, 16px)
+// // // 2.5em 1.875em 1.25em 0.625em
+// @example scss Calculate from a single value.
+// // em(40px, 16px)
+// // // 2.5em
+
+@function em($values, $base: $baseFontSize) {
+  $max: length($values);
+
+  @if $max == 1 {
+    @return em-to(nth($values, 1), $base);
+  }
+
+  $em-values: ();
+
+  @for $i from 1 through $max {
+    $em-values: append($em-values, em-to(nth($values, $i), $base));
+  }
+
+  @return $em-values;
+}
+
+// breakpoint-tip
+// Simply adds or subtracts a single pixel from a breakpoint.
+//
+// @since 2.0.0
+// @type Function
+//
+// @param {Number} $breakpoint A px or em breakpoint number,
+// @param {String} $direction ($baseFontSize) The base font size to calculate the em.
+//
+// @returns {List} $tip (Up|Down) Add or subtract the value - Down subtracts.
+
+@function breakpoint-tip($breakpoint, $tip: down) {
+  $value: 1px;
+
+  @if "em" == unit($breakpoint) {
+    $value: em($value, 16px);
+  }
+
+  @if "down" == $tip {
+    @return $breakpoint - $value;
+  }
+  @else if "up" == $tip {
+    @return $breakpoint + $value;
+  }
+}
+
+// Avoid repetition of map-get($color, foo).
+
+@function color($key) {
+  @if map-has-key($color, $key) {
+    @return map-get($color, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $color.";
+  @return null;
+}
+
+// This fixes a bug in libsass 3.0.1 where the compact function 
+// is missing.
+@function compact($args...) {
+  $first: nth($args, 1);
+  $sep: comma;
+  $list: ();
+
+  @if length($args) == 1 and type_of($first) == 'list' {
+    $args: $first;
+    $sep: list-separator($args);
+  }
+
+  @for $index from 1 through length($args) {
+    $arg: nth($args, $index); 
+
+    @if $arg {
+      $list: append($list, $arg, $sep);
+    }
+  }
+
+  @return $list;
+}

@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Two column template for the checkout form.
+ *
+ * Available variables:
+ * - form: The form.
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="layout-checkout-form">
+  <div class="row">
+    <div class="col-lg-8 col-md-6">
+      <div class="shopping-cart-table">
+        {% if form.contact_information['#title']  %}
+          <h3 class="checkout-title">{{ form.contact_information['#title'] }}</h3>
+        {% endif %}
+        <div class="row">
+          <div class="col-lg-6">
+              {{ form.contact_information.email }}
+          </div>
+          <div class="col-lg-6">
+              {{ form.contact_information.email_confirm }}
+          </div>
+        </div>
+        {{ form|without('sidebar', 'actions', 'contact_information') }}
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="checkout-order">
+        <h3 class="order-title">{% trans %} Your order {% endtrans %}</h3>
+        {{ form.sidebar }}
+      </div>
+    </div>
+  </div>
+  <div class="layout-region-checkout-footer">
+    {{ form.actions }}
+  </div>
+</div>

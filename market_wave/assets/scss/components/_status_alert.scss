@@ -1,0 +1,23 @@
+.status_alert_message {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 9;
+    .alert {
+        margin: 0;
+        .status_message_content {
+            .alert-heading{
+                margin: 0;
+                font-size: em(18);
+                line-height: em(22);
+            }
+            hr{
+                margin: em(7) em(0);
+            }
+            .message {
+                font-size: em(16);
+                line-height: em(20);
+            }
+        }
+    }
+}

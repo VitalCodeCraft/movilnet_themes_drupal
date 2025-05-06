@@ -1,0 +1,17 @@
+footer.site-footer {
+    background-color: $black;
+    padding-top: em(70);
+    color: $fossil;
+    margin-top: em(100);
+
+    // bottom footer
+    .region-footer-bottom {
+        text-align: center;
+        border-top: 1px solid $charcoal;
+        padding: em(20) 0;
+        margin-top: em(40);
+        p {
+            margin: 0;
+        }
+    }
+}

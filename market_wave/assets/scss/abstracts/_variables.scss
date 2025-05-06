@@ -1,0 +1,44 @@
+// Font Sizing
+$baseFontSize      : 16px;
+$baseLineHeight    : 26px;
+$base-vertical-margin: $baseLineHeight * 0.75;
+$headingLineHeight : 1.2;
+
+// Colors
+$black : #111111;
+$red   : #e53637;
+$pink : #f34573;
+$blue  : #00a1de;
+
+$cerulean: #0080B1;
+$persian: #00529F;
+$charcoal: #252D36;
+$fossil: #b7b7b7;
+$cloud: #DDE2E5;
+$haze: #f3f2ee;
+$white: #FFFFFF;
+$blue-ocean: #08c;
+$border-color: #e1e1e1;
+$dark-grey: #3d3d3d;
+
+// Elements
+$color-body: $charcoal;
+$color-display: $color-body;
+$color-link: $charcoal;
+$color-link-hover: $persian;
+
+// Spacing
+$pad : 1em;
+
+// Typography
+// ------------------------------
+
+$type-gsn-base-fallback: Helvetica, Arial, sans-serif;
+$type-gsn-light: 'GillSansNova-Light';
+$type-gsn-book: 'GillSansNova-Book';
+$type-gsn-semi-bold: 'GillSansNova-SemiBold';
+$type-gsn-bold: 'GillSansNova-Bold';
+
+$type-font-family-body: $type-gsn-book, $type-gsn-base-fallback;
+$type-font-family-display: $type-font-family-body;
+$type-font-family-mono: monospace;

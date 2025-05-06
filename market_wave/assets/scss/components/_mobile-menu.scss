@@ -1,0 +1,39 @@
+.mobile-menu {
+    backdrop-filter: blur(15px);
+    padding: em(5) em(10);
+    .navbar-toggler {
+        display: block;
+        height: em(35);
+        width: em(35);
+        line-height: em(35);
+        border: 1px solid $black;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+    .menu-wrapper {
+        left: em(-300);
+        -webkit-transition: all, 0.5s;
+        -o-transition: all, 0.5s;
+        transition: all, 0.5s;
+        opacity: 0;
+        top: 0;
+        background: $white;
+        width: em(300);
+        position: fixed;
+        height: 100vh;
+        &.open {
+            left: 0;
+            opacity: 1;
+            .menu--main ul.nav {
+                display: block;
+                li.nav-item {
+                    float: none;
+                    text-align: left;
+                    a.nav-link {
+                        color: $black !important;
+                    }
+                }
+            }
+        }
+    }
+}

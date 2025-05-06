@@ -1,0 +1,20 @@
+# Global stylings. These CSS files will be loaded on every pages.
+global-styling:
+  css:
+    theme:
+      css/bootstrap.min.css: {}
+      css/swiper.min.css: {}
+      css/styles.css: {}
+      assets/scss/styles.scss: { css_path: "/css/" }
+  js:
+    js/bootstrap.min.js: { preprocess: false }
+    js/swiper.min.js: { preprocess: false }
+    js/script.js: { preprocess: false }
+    js/slider.js: { preprocess: false }
+    js/status_alert.js: { preprocess: false }
+
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery
+    - core/once
