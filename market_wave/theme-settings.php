@@ -94,6 +94,29 @@ function market_wave_form_system_theme_settings_alter(&$form, FormStateInterface
       '#title' => t('Descriptions'),
       '#default_value' => theme_get_setting("slide_desc_{$i}", "market_wave")['value'],
     ];
+
+      // ¡NUEVO CAMPO AQUÍ!
+    $form['Banner']['slidecontent']['slide' . $i]['slide_alignment_text_' . $i] = [
+      '#type' => 'select',
+      '#title' => t('Text Alignment'),
+      '#options' => [
+        'left' => t('Left'),
+        'center' => t('Center'),
+        'right' => t('Right'),
+      ],
+      // Obtener el valor guardado o 'left' como valor por defecto
+      '#default_value' => theme_get_setting("slide_alignment_text_{$i}", "market_wave") ?? 'left',
+      '#description' => t('Select the alignment for the slide text.'),
+    ];
+
+    $form['Banner']['slidecontent']['slide' . $i]['slide_image_' . $i] = [
+      '#type' => 'managed_file',
+      '#title' => t('Image'),
+      '#description' => t('Use same size for all the slideshow images(Recommented size : 1920 X 603).'),
+      '#default_value' => theme_get_setting("slide_image_{$i}", "market_wave"),
+      '#upload_location' => 'public://',
+    ];
+
     $form['Banner']['slidecontent']['slide' . $i]['slide_image_' . $i] = [
       '#type' => 'managed_file',
       '#title' => t('Image'),
@@ -229,6 +252,7 @@ function market_wave_custom_submit_callback(&$form, FormStateInterface $form_sta
     \Drupal::configFactory()->getEditable('theme.market_wave')
       ->set("slide_title_{$i}", $form_state->getValue("slide_title_{$i}"))
       ->set("slide_desc_{$i}", $form_state->getValue("slide_desc_{$i}")) // Acceder al 'value' del text_format
+      ->set("slide_alignment_text_{$i}", $form_state->getValue("slide_alignment_text_{$i}")) // ¡NUEVA LÍNEA AQUÍ!
       ->set("slide_image_{$i}", $form_state->getValue("slide_image_{$i}")[0] ?? '') // Guardar el FID de la imagen
       ->set("slide_url_{$i}", $form_state->getValue("slide_url_{$i}"))
       ->set("slide_url_title_{$i}", $form_state->getValue("slide_url_title_{$i}"))

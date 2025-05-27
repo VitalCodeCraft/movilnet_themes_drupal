@@ -5,17 +5,17 @@
     });
     var interleaveOffset = 0.5;
     var swiperOptions = {
-        loop: TRUE,
+        loop: true,
         speed: 1000,
-        parallax: TRUE,
+        parallax: true,
         autoplay: {
             delay: 6500,
-            disableOnInteraction: FALSE,
+            disableOnInteraction: false,
         },
-        watchSlidesProgress: TRUE,
+        watchSlidesProgress: true,
         pagination: {
             el: '.swiper-pagination',
-            clickable: TRUE,
+            clickable: true,
         },
 
         navigation: {

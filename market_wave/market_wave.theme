@@ -78,49 +78,66 @@ function market_wave_preprocess_page(&$variables) {
  */
 function market_wave_theme_get_slider_content() {
   $slide_num = theme_get_setting('slide_num');
+  $slider_content = [];
+
+  error_log("DEBUG: Iniciando market_wave_theme_get_slider_content. slide_num: " . $slide_num); // Punto 1
+
   for ($i = 1; $i <= $slide_num; $i++) {
-    // Create a temporary variable to hold the fileID.
+    error_log("DEBUG: Procesando slide #" . $i); // Punto 2
+
     $file_id = theme_get_setting('slide_image_' . $i);
+    error_log("DEBUG: slide_image_" . $i . " (file_id): " . var_export($file_id, TRUE) . " (Tipo: " . gettype($file_id) . ")"); // Punto 3
+
+    $image_path = "";
+
     if (!empty($file_id)) {
-      $file = File::load($file_id[0]);
+      // Si $file_id es un array (como indica el log), obtenemos el primer elemento.
+      // Si ya es un entero, lo usamos directamente.
+      $fid_to_load = is_array($file_id) ? reset($file_id) : $file_id;
+
+      $file = File::load($fid_to_load); // Pasa el FID real, no el array.
       if ($file) {
         $uri = $file->getFileUri();
         $image_path = \Drupal::service('file_url_generator')->generateAbsoluteString($uri);
+      } else {
+          error_log("DEBUG: Error: File::load() devolvió NULL para file_id: " . var_export($fid_to_load, TRUE));
       }
     }
+    // ... el resto de tu lógica para fallback de imagen y generación de HTML
     elseif ($i < 3) {
-      $image_path = \Drupal::service('extension.list.theme')->getPath('market_wave') . '/images/slide' . $i . '_image.jpg';
-    }
-    else {
-      // Handle the case when the file is not found.
-      $image_path = "";
-    }
-    // Now use the temporary variable as the key in the array.
-    if (empty(theme_get_setting('slide_title_' . $i)) && empty(theme_get_setting('slide_url_' . $i)) && empty(theme_get_setting('slide_url_title_' . $i)) && empty($image_path)) {
-      $message = "All feild is empty";
+        $image_path = \Drupal::service('extension.list.theme')->getPath('market_wave') . '/images/slide' . $i . '_image.jpg';
     } else {
-      if ((!empty(theme_get_setting('slide_title_' . $i)) || empty(theme_get_setting('slide_url_' . $i)) || empty(theme_get_setting('slide_url_title_' . $i))) && empty($image_path)) {
-        $image_path = \Drupal::service('extension.list.theme')->getPath('market_wave') . '/images/slide' . 1 . '_image.jpg';
-      }
-      $slider_content[$i] = '<div class="swiper-slide swiper-slide-item--'. $i .'">
-          <div class="slide-inner slide-bg-image" data-background="' . $image_path . '">
-            <div class="container">
-              <div data-swiper-parallax="300" class="slide-title">
-                <h2>'.theme_get_setting('slide_title_' . $i).'</h2>
-              </div>
-              <div data-swiper-parallax="400" class="slide-text">
-                <p>'.theme_get_setting('slide_desc_' . $i)['value'].'</p>
-              </div>
-              <div class="clearfix"></div>
-              <div data-swiper-parallax="500" class="slide-btns">
-              <a href="'.theme_get_setting('slide_url_' . $i).'" class="button--secondary">'.theme_get_setting('slide_url_title_' . $i).'</a>
-              </div>
-            </div>
-          </div>
-          <!-- end slide-inner -->
-        </div>';
+        $image_path = "";
+    }
+
+    $slide_alignment = theme_get_setting('slide_alignment_text_' . $i) ?? 'left';
+
+    if (empty(theme_get_setting('slide_title_' . $i)) && empty(theme_get_setting('slide_url_' . $i)) && empty(theme_get_setting('slide_url_title_' . $i)) && empty($image_path)) {
+        error_log("DEBUG: Todos los campos estan vacios para slide #" . $i);
+    } else {
+        if ((!empty(theme_get_setting('slide_title_' . $i)) || !empty(theme_get_setting('slide_url_' . $i)) || !empty(theme_get_setting('slide_url_title_' . $i))) && empty($image_path)) {
+            $image_path = \Drupal::service('extension.list.theme')->getPath('market_wave') . '/images/slide' . 1 . '_image.jpg';
+        }
+        $slider_content[$i] = '<div class="swiper-slide swiper-slide-item--'. $i .' text-align-'. $slide_alignment .'">
+                    <div class="slide-inner slide-bg-image" data-background="' . $image_path . '">
+                      <div class="container">
+                        <div data-swiper-parallax="300" class="slide-title">
+                          <h2>'.theme_get_setting('slide_title_' . $i).'</h2>
+                        </div>
+                        <div data-swiper-parallax="400" class="slide-text">
+                          <p>'.theme_get_setting('slide_desc_' . $i)['value'].'</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div data-swiper-parallax="500" class="slide-btns">
+                        <a href="'.theme_get_setting('slide_url_' . $i).'" class="button--secondary">'.theme_get_setting('slide_url_title_' . $i).'</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>';
+        error_log("DEBUG: HTML generado para slide #" . $i); // Punto 7
     }
   }
+  error_log("DEBUG: market_wave_theme_get_slider_content finalizado."); // Punto 8
   return $slider_content;
 }
 
