@@ -292,8 +292,28 @@ function market_wave_custom_submit_callback(&$form, FormStateInterface $form_sta
     // For managed_file, the value is an array of FIDs. We want to store the first one.
     $fid_array = $form_state->getValue("slide_image_{$i}");
     if (!empty($fid_array)) {
-      $config_market_wave->set("slide_image_{$i}", reset($fid_array));
+      // **¡CAMBIOS NECESARIOS AQUÍ!**
+      $fid = reset($fid_array);
+      $file = File::load($fid);
+      if ($file instanceof File) {
+        if (!$file->isPermanent()) {
+          $file->setPermanent();
+          $file->save(); // Guardar el estado de permanencia.
+        }
+        // Asocia el archivo al tema (Drupal lo hace automáticamente para config, pero no está de más).
+        // Si el uso ya está registrado, esto no causará problemas.
+        \Drupal::service('file.usage')->add($file, 'market_wave', 'theme', 'market_wave');
+        $config_market_wave->set("slide_image_{$i}", $fid);
+      }
     } else {
+      // Si no hay archivo nuevo, pero ya había uno guardado, limpia su uso si ya no se necesita.
+      $old_fid = $config_market_wave->get("slide_image_{$i}");
+      if ($old_fid) {
+        $old_file = File::load($old_fid);
+        if ($old_file instanceof File) {
+          \Drupal::service('file.usage')->delete($old_file, 'market_wave', 'theme', 'market_wave');
+        }
+      }
       $config_market_wave->clear("slide_image_{$i}"); // Clear if no file selected
     }
 
